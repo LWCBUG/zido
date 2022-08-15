@@ -3,7 +3,9 @@
 # import time
 from selenium import webdriver
 import os
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium import webdriver
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
@@ -18,7 +20,7 @@ from selenium.webdriver.common.keys import Keys
 def ui_auto_operation():
     # 模拟登陆
     # rep = requests.Session()
-    browser = webdriver.Chrome(ChromeDriverManager().install())
+    browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
     browser.implicitly_wait(10)  # 设置隐性等待,等待10S加载出相关控件再执行之后的操作
     browser.maximize_window()
     browser.get('http://121.5.10.180:9999')
@@ -52,7 +54,7 @@ def ui_auto_operation():
     os.system(r"C:\Users\24218\Documents\1.exe")
     time.sleep(30)
     browser.find_element(By.ID,'umbutton').click()
-    time.sleep(30)
+    time.sleep(3000)
     browser.close()
     # browser.quit()
     # # cookies = browser.get_cookies()
